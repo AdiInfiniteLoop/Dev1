@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const { program } = require("commander");
-const fs = require("fs");
+import { program } from "commander";
+import { readFile } from "fs";
 
 program.description("CLI to count words in a document").version("0.8.0");
 
@@ -8,7 +8,7 @@ program
   .command("count <file>")
   .description("Count words in the specified file")
   .action((file) => {
-    fs.readFile(file, "utf8", (err, data) => {
+    readFile(file, "utf8", (err, data) => {
       if (err) console.log(err.message);
       else {
         const lines = data.split("\n").length;
